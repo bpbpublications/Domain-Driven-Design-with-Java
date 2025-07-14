@@ -4,34 +4,47 @@ import expert.os.books.ddd.chapter05.hotels.Hotel;
 import expert.os.books.ddd.chapter05.hotels.Room;
 import org.jmolecules.architecture.layered.InfrastructureLayer;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 @InfrastructureLayer
 public class MemoryHotel implements Hotel {
 
+    private final Map<Integer, Room> rooms = new HashMap<>();
 
     @Override
     public Room checkIn(Room room) {
-        return null;
+        Objects.requireNonNull(room, "room can not be null");
+        rooms.put(room.getNumber(), room);
+        return room;
     }
 
     @Override
     public void checkOut(Room room) {
-
+        Objects.requireNonNull(room, "room can not be null");
+        rooms.computeIfPresent(room.getNumber(), (number, existing) -> {
+            existing.cleanRoom();
+            return existing;
+        });
     }
 
     @Override
     public Optional<Room> reservation(String number) {
-        return Optional.empty();
+        Objects.requireNonNull(number, "room number can not be null");
+        return Optional.ofNullable(rooms.get(Integer.parseInt(number)));
     }
 
     @Override
     public Long countBy() {
-        return 0L;
+        return (long) rooms.size();
     }
 
     @Override
     public Optional<Room> findEmptyRoom() {
-        return Optional.empty();
+        return rooms.values().stream()
+                .filter(Room::isEmpty)
+                .findFirst();
     }
 }
