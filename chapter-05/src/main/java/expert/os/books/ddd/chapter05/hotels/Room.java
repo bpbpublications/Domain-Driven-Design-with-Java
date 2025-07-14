@@ -34,5 +34,9 @@ public class Room {
         this.guest = guest;
     }
 
+    public boolean isEmpty() {
+        return EMPTY_GUEST.equals(guest);
+    }
+
 
 }
