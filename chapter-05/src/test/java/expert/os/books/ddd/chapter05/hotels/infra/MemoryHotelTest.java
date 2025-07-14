@@ -1,7 +1,6 @@
 package expert.os.books.ddd.chapter05.hotels.infra;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import expert.os.books.ddd.chapter05.hotels.Guest;
 import expert.os.books.ddd.chapter05.hotels.Hotel;
