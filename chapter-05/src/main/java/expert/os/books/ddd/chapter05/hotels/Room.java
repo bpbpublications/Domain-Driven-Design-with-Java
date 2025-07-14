@@ -3,10 +3,12 @@ package expert.os.books.ddd.chapter05.hotels;
 import org.jmolecules.ddd.annotation.Entity;
 import org.jmolecules.ddd.annotation.Identity;
 
+import java.util.Objects;
+
 @Entity
 public class Room {
 
-    static final Guest EMPTY_GUEST = new Guest("0", "EMPTY");
+    public static final Guest EMPTY_GUEST = new Guest("0", "EMPTY");
 
     @Identity
     private int number;
@@ -23,6 +25,12 @@ public class Room {
 
     public void setGuest(Guest guest) {
         this.guest = guest;
+    }
+
+    public Room checkIn(Guest guest) {
+        Objects.requireNonNull(guest, "guest can not be null");
+        this.guest = guest;
+        return this;
     }
 
     public void cleanRoom() {
