@@ -78,7 +78,7 @@ public class SoftwareEngineerResource {
     @Path("{id}")
     public void delete(@PathParam("id") Long id) {
         if (!SoftwareEngineer.deleteById(id)) {
-            throw new WebApplicationException(404);
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
     }
 }
