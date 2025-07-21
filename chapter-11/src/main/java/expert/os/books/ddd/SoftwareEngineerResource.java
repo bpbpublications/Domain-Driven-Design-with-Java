@@ -67,10 +67,10 @@ public class SoftwareEngineerResource {
     public Response update(@PathParam("id") Long id, SoftwareEngineer softwareEngineer) {
         if (SoftwareEngineer.findById(id) == null) {
             SoftwareEngineer.persist(softwareEngineer);
-            return Response.status(204).build();
+            return Response.status(Response.Status.CREATED).build();
         }
         SoftwareEngineer.persist(softwareEngineer);
-        return Response.status(201).build();
+        return Response.ok().build();
     }
 
     @Transactional
