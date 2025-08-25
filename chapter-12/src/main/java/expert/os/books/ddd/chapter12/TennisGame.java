@@ -2,8 +2,8 @@ package expert.os.books.ddd.chapter12;
 
 
 public class TennisGame {
-    private Player playerOne;
-    private Player playerTwo;
+    private final Player playerOne;
+    private final Player playerTwo;
 
     public TennisGame(Player playerOne, Player playerTwo) {
         this.playerOne = playerOne;
@@ -11,10 +11,11 @@ public class TennisGame {
     }
 
     public void playerScores(Player player) {
-        player.setScore(player.getScore() + 1);
+        player.scorePoint();
     }
 
     public String getScore() {
         return playerOne.getScore() + " - " + playerTwo.getScore();
     }
+
 }
