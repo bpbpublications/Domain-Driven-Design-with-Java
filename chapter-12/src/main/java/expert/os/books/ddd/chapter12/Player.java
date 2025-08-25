@@ -1,4 +1,4 @@
-package expert.os.books.ddd.chapter03;
+package expert.os.books.ddd.chapter12;
 
 public class Player {
 
