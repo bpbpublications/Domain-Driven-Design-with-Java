@@ -1,31 +1,23 @@
 package expert.os.books.ddd.chapter12;
 
-public class Player {
-
+class Player {
     private String name;
+    private int score;
 
-    private String position;
-
-    private int age;
-
-    public Player(String name, String position, int age) {
+    public Player(String name) {
         this.name = name;
-        this.position = position;
-        this.age = age;
-    }
-
-    public Player() {
+        this.score = 0;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPosition() {
-        return position;
+    public int getScore() {
+        return score;
     }
 
-    public int getAge() {
-        return age;
+    public void setScore(int score) {
+        this.score = score;
     }
 }
